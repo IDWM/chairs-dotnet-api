@@ -1,4 +1,5 @@
 using chairs_dotnet8_api;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,5 +13,14 @@ var app = builder.Build();
 
 var chairs = app.MapGroup("api/chair");
 
+//TODO: ASIGNACION DE RUTAS A LOS ENDPOINTS
+chairs.MapGet("/", GetChairs);
+
 app.Run();
+
+//TODO: ENDPOINTS SOLICITADOS
+static IResult GetChairs(DataContext db)
+{
+    return TypedResults.Ok();
+}
 
